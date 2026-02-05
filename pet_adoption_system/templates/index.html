@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetAdopt - Connecting Hearts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --soft-blue: #e3f2fd; --paw-orange: #ff9800; --deep-purple: #6c5ce7; --accent-purple: #a29bfe; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
+        
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1350&q=80'); 
+            height: 450px; 
+            background-size: cover; 
+            background-position: center;
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            border-radius: 0 0 50px 50px;
+        }
+        
+        .pet-card { border: none; border-radius: 15px; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .pet-card:hover { transform: translateY(-5px); }
+        .goal-icon { font-size: 2rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; }
+        footer a:hover { color: var(--accent-purple) !important; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🐾 PetAdopt</a>
+        </div>
+    </nav>
+
+    <div class="hero mb-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Connecting Hearts, Saving Lives</h1>
+            <p class="lead">Your aesthetic portal to finding your new best friend.</p>
+            <a href="#pets" class="btn btn-warning btn-lg rounded-pill px-4 mt-3 fw-bold">Meet our Pets</a>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-6">
+                <div class="card pet-card p-4 h-100">
+                    <div class="display-6 mb-3">🎯</div>
+                    <h3 class="fw-bold">Our Mission</h3>
+                    <p class="text-muted">To provide a seamless, secure, and compassionate digital bridge between homeless animals and loving forever homes.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card pet-card p-4 h-100">
+                    <div class="display-6 mb-3">👁️</div>
+                    <h3 class="fw-bold">Our Vision</h3>
+                    <p class="text-muted">To become the leading community-driven platform that eliminates pet abandonment through technology and education.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h2 class="text-center fw-bold mb-5">Our Core Goals</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="goal-icon bg-primary text-white rounded-circle shadow mb-3">🚀</div>
+                <h5>Streamlined Adoption</h5>
+                <p class="small text-muted">Reducing paperwork and wait times through automation.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="goal-icon bg-success text-white rounded-circle shadow mb-3">🛡️</div>
+                <h5>Verified Security</h5>
+                <p class="small text-muted">Protecting pets and adopters with mandatory ID verification.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="goal-icon bg-warning text-white rounded-circle shadow mb-3">🤝</div>
+                <h5>Community Support</h5>
+                <p class="small text-muted">Sustaining operations through transparent donation channels.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 pt-5" id="pets">
+        <h2 class="text-center fw-bold mb-4">Available Pets</h2>
+        <div class="row">
+            {% for pet in pets %}
+            <div class="col-md-4 mb-4">
+                <div class="card pet-card p-3">
+                    <img src="{{ pet.image_url }}" class="card-img-top rounded mb-3" alt="{{ pet.name }}" style="height: 250px; object-fit: cover;">
+                    <h3 class="fw-bold">{{ pet.name }}</h3>
+                    <p class="text-muted">{{ pet.breed }}</p>
+                    <a href="/adopt/{{ pet.id }}" class="btn btn-warning rounded-pill fw-bold">Adopt Me</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container bg-white p-5 rounded shadow-sm text-center mb-5">
+        <h2 class="fw-bold">Make a Difference</h2>
+        <p class="text-muted">Every small contribution helps us provide medical care and food for our rescues.</p>
+        <a href="#contact" class="btn btn-outline-dark rounded-pill px-4">See how you can help</a>
+    </div>
+
+    <footer id="contact" class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4" style="color: #a29bfe;">Contact Us</h5>
+                    <p>📍 123 Pet Lane, Quezon City, PH</p>
+                    <p>📞 +63 912 345 6789</p>
+                    <p>📧 hello@petadopt.ph</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4" style="color: #a29bfe;">Donation Channels</h5>
+                    <p><strong>GCash:</strong> Juan Dela Cruz (09123456789)</p>
+                    <p><strong>Maya:</strong> @PetAdoptPH</p>
+                    <p><strong>BPI:</strong> 1234-5678-90</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4" style="color: #a29bfe;">Admin Access</h5>
+                    <p><a href="/admin/login" class="text-white text-decoration-none">Staff Portal Login</a></p>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p class="small text-muted mb-0">&copy; 2026 PetAdopt Philippines. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
